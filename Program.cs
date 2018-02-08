@@ -233,6 +233,11 @@ namespace DNWS
         private static DotNetWebServer _instance = null;
         protected int id;
 
+        public class var1
+        {
+            public static string name = "123";
+
+        }
         private DotNetWebServer(int port, Program parent)
         {
             _port = port;
@@ -258,6 +263,12 @@ namespace DNWS
         /// <summary>
         /// Server starting point
         /// </summary>
+        /// 
+        //public class Variables
+        //{
+        //    public static string name = "123";
+
+        //}
         public void Start()
         {
             while (true) {
@@ -284,6 +295,12 @@ namespace DNWS
                 {
                     // Wait for client
                     clientSocket = serverSocket.Accept();
+                    //
+                    //
+                    
+                    var1.name = clientSocket.RemoteEndPoint.ToString();
+
+                    //
                     // Get one, show some info
                     _parent.Log("Client accepted:" + clientSocket.RemoteEndPoint.ToString());
                     HTTPProcessor hp = new HTTPProcessor(clientSocket, _parent);
