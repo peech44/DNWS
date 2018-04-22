@@ -154,7 +154,7 @@ namespace DNWS
         public int Index
         {
             set { _index = value; }
-            get { return _index; }
+            get { return _index+1; }
         }
 
         public char Player
