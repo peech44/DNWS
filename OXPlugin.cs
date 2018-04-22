@@ -388,17 +388,17 @@ namespace DNWS
                     if (parameters.ContainsKey("username") && parameters["username"] != "" && parameters.ContainsKey("password") && parameters["password"] != "")
                     {
                         Player player = GetPlayerByUserName(parameters["username"]);
-                        if(player != null)
-                        {
-                            sb.Append("<h2>Username exists, please change username</h2>");
-                            sb.Append("<a href=\"/ox?action=newplayer\">Click here to go back to register page</a>");
-                        }
-                        else
+                        if(player == null)
                         {
                             AddPlayer(parameters["username"].Trim(), parameters["password"].Trim());
                             sb.Append("<h2>Player added successfully</h2>");
                             sb.Append(String.Format("Please note your login is <b>{0}</b> and password is <b>{1}</b>. <br />", parameters["username"], parameters["password"]));
                             sb.Append(String.Format("<a href=\"/ox?username={0}\">Click here to go back to home page</a>", parameters["username"]));
+                        }
+                        else
+                        {
+                            sb.Append("<h2>Username exists, please change username</h2>");
+                            sb.Append("<a href=\"/ox?action=newplayer\">Click here to go back to register page</a>");
                         }   
                     }
                     else
@@ -615,11 +615,7 @@ namespace DNWS
         {
             Player player = new Player(name, password);
             Player check_player = GetPlayerByUserName(name);
-            if(check_player != null)
-            {
-                Console.WriteLine("{0} exists.", name);
-            }
-            else
+            if(check_player == null)
             {
                 _playerList.Add(player);
                 Console.WriteLine("{0} added successfully.", name);
