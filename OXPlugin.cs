@@ -588,6 +588,11 @@ namespace DNWS
                         sb.Append(String.Format("<a href=\"/ox?username={0}\">Click here to go back to home page.</a>", parameters["username"]));
                     }                   
                 }
+            else
+                {
+                    sb.Append("<h2>This action isn't unaviable !!!</u></h2>");
+                    sb.Append("<a href=\"/ox\">Click here to go back to home page</a>");
+                }
             }
             response.body = Encoding.UTF8.GetBytes(sb.ToString());
             return response;
