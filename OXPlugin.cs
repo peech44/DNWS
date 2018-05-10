@@ -154,7 +154,7 @@ namespace DNWS
         public int Index
         {
             set { _index = value; }
-            get { return _index+1; }
+            get { return _index; }
         }
 
         public char Player
@@ -589,7 +589,7 @@ namespace DNWS
                     }                   
                 }
             }
-            response.body = Encoding.UTF8.GetBytes(sb.ToString());
+            response.Body = Encoding.UTF8.GetBytes(sb.ToString());
             return response;
         }
 
