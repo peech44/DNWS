@@ -1,10 +1,4 @@
 project.lock.json
-DNWS260.code-workspace
-Dockerfile
 bin/
 obj/
-out/
 Migrations/
-*.db
-client/node_modules/
-client/app/bower_components/
