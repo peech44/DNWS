@@ -7,7 +7,6 @@ namespace DNWS
   /// Gen HTML about client info using information from request header
   /// </summary>
   /// <returns>HTML client info</returns>
-  /// //create client page
 
   public class ClientInfoPlugin : IPlugin
   {
@@ -15,29 +14,25 @@ namespace DNWS
     {
       StringBuilder sb = new StringBuilder();
 
-      string[] client_endpoint = request.GetPropertyByKey("RemoteEndPoint").Split(':');
-
-      //
+      string[] client_endpoint = request.getPropertyByKey("RemoteEndPoint").Split(':');
       string val;
       sb.Append("<html><body>");
-      sb.Append("Client port: ").Append(client_endpoint[1]).Append("<br />\n");
-
-      if ((val = request.GetPropertyByKey("user-agent")) != null)
+      sb.Append("Client Port: ").Append(client_endpoint[1]).Append("<br />\n");
+      if ((val = request.getPropertyByKey("user-agent")) != null)
       {
-        sb.Append("Browser information: ").Append(val).Append("<br />\n");
+        sb.Append("Browser Information: ").Append(val).Append("<br />\n");
       }
-      if ((val = request.GetPropertyByKey("accept-language")) != null)
+      if ((val = request.getPropertyByKey("accept-language")) != null)
       {
-        sb.Append("Accept language: ").Append(val).Append("<br />\n");
+        sb.Append("Accept Language: ").Append(val).Append("<br />\n");
       }
-      if ((val = request.GetPropertyByKey("accept-encoding")) != null)
+      if ((val = request.getPropertyByKey("accept-encoding")) != null)
       {
-        sb.Append("Accept encoding: ").Append(val).Append("<br />\n");
+        sb.Append("Accept Encoding: ").Append(val).Append("<br />\n");
       }
-      //
       sb.Append("</body></html>");
       HTTPResponse response = new HTTPResponse(200);
-      response.Body = Encoding.UTF8.GetBytes(sb.ToString());
+      response.body = Encoding.UTF8.GetBytes(sb.ToString());
       return response;
     }
 
